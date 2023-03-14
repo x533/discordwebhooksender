@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discord Webhook Message Sender</title>
+</head>
+<body>
+<h1>Discord Webhook Sender</h1>
+profile picture image link: <input type="text" id="pfp"> (leave blank for default)<br>
+webhook url: <input type="text" id="url"><br>
+name: <input type="text" id="name"><br>
+text: <input type="text" id="msgsend"><br>
+<button onclick="sendMessage()">Send</button>
+<script>
+    function sendMessage() {
+      var request = new XMLHttpRequest();
+      request.open("POST", document.getElementById("url"));
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        username: document.getElementById("name").value,
+        avatar_url: document.getElementById("pfp").value,
+        content: document.getElementById("msgsend").value
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+<:lober:1085061365758165083>
